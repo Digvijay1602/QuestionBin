@@ -53,14 +53,55 @@ public class HomeController {
 	
 	
 	@RequestMapping(value="/upload",method=RequestMethod.POST)  
-	public String uploading(Locale locale, Model model){
+	public String uploading(User user,Locale locale, Model model,HttpSession session){
 		Date date = new Date();
 		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
 
 		String formattedDate = dateFormat.format(date);
 		model.addAttribute("serverTime", formattedDate);
 		
-		return "uploading";
+		String path=session.getServletContext().getRealPath("/WEB-INF/Log/"); 
+		File Idloc=new File(path+""+"LoginId.txt");
+		System.out.println(Idloc);
+		
+		FileInputStream fileStem = null;
+		try {
+			fileStem = new FileInputStream(Idloc);
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		BufferedInputStream buffReder=new BufferedInputStream(fileStem);  
+		
+		int a;
+		StringBuilder  fileStringBilder=new StringBuilder();
+		
+		try {
+			while((a=buffReder.read())!=-1){ 
+				fileStringBilder.append((char)a);
+			}
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		String[] splitlogFile = fileStringBilder.toString().split("loginlogin");
+		List<String> logiIdList=Arrays.asList(splitlogFile);
+		//System.out.println(logiIdList);
+		
+		for (int i = 0; i < logiIdList.size(); i++) {
+			
+			String struserId=user.getUserId().trim();
+			String userPwd=user.getPassword().trim();
+			
+			if (logiIdList.get(i).trim().equalsIgnoreCase(struserId) && userPwd=="sangamone@1") {
+			
+				return "uploading";
+			}
+				
+		}
+		return "errorpage";
 	}
 
 	
