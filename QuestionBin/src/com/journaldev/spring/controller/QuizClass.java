@@ -120,6 +120,7 @@ public class QuizClass
 			buffReader.close();   
 			fileInStem.close(); 
             sc.close();
+            filenamescnner.close();
             
 		}catch(Exception e){System.out.println(e);}    
 	}    

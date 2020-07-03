@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+<h1>QuestionBin</h1><br>
 <h1 >Uploaded Successfully</h1>
 </body>
 </html>

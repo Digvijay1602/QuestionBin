@@ -8,8 +8,9 @@
 <title>user</title>
 </head>
 <body>
+<h1>QuestionBin</h1><br>
 <form action="question" method="post">
-	Enter your Initial or name:	<input type="text" name="userName"><br> 
+	Enter your Initial or name:	<input type="text" name="userName" required><br> 
 	 <p>
 			Choose subject :
 			

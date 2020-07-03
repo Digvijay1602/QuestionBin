@@ -4,13 +4,14 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>admin</title>
 </head>
 <body>
+<h1>QuestionBin</h1><br>
 <form action="uploaded" method="post" enctype="multipart/form-data">  
 Select File: <input type="file" name="file"/>  
 <input type="submit" value="Upload File"/> 
-<p>${uploadmsg}</p> 
+<%-- <p>${uploadmsg}</p> --%> 
 </form>
 </body>
 </html>

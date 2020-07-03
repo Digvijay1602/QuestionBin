@@ -5,21 +5,29 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>User Home Page</title>
+<title>test</title>
 </head>
 <body>
 <h1>QuestionBin</h1>
 <h3>Hi ${userName} </h3><br>
 <p> ${serverTime}</p>
-<p>Question :</p><br>
-<form action="question" method="post">
+<p>Question: ${subjectType}</p><br>
+<form action="result" method="post">
 <table>
-<c:forEach items="${quesList}" var="question">
-        <tr>
-            <td>${question}</td>         
-        </tr>
-    </c:forEach>
-</table>
+
+<c:forEach  items="${queList}" var="question" varStatus="outer">
+       
+             <p>${question}</p>  
+     <c:forEach items="${optionList}" var="option"  varStatus="inner">
+         <c:if test="${outer.index == inner.index}">
+            <p> ${option}</p>
+          Answer:  <input type="text" name="correctAnswer" required>
+        </c:if>
+              <%-- <p> ${option}</p>  --%> 
+     </c:forEach>     
+</c:forEach> 
+</table><br>
+<input type="submit" value="Finish">
 </form>
 </body>
 </html>

@@ -8,7 +8,7 @@
 <title>Home</title>
 </head>
 <body>
-	<form action="admin" method="post">
+	<form action="login" method="post">
 <button >Admin</button>
 </form>
 <form action="user" method="post">

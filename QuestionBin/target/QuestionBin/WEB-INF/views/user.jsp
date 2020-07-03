@@ -5,18 +5,19 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>user</title>
 </head>
 <body>
+<h1>QuestionBin</h1><br>
 <form action="question" method="post">
-	Enter your name:	<input type="text" name="userName"><br> 
+	Enter your Initial or name:	<input type="text" name="userName"><br> 
 	 <p>
 			Choose subject :
 			
-			 <select id="question" name="question1">
-			 <c:forEach items="${subjectList}" var="questiontype">
+			 <select id="question" name="subjectType">
 			 <option value=" "> </option>
-				<option value="${questiontype} ">${questiontype}</option>
+			 <c:forEach items="${subjectList}" var="questiontype">
+				<option  value="${questiontype} ">${questiontype}</option>
 				</c:forEach>
 			</select>
 			 
@@ -24,5 +25,5 @@
 		
 		 <input type="submit" value="Enter">
 		 </form>
-</body>
+		 </body>
 </html>
