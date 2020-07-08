@@ -2,11 +2,13 @@ package com.journaldev.spring.controller;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -166,7 +168,7 @@ public class HomeController {
 
 	
 	@RequestMapping(value = "/question", method = RequestMethod.POST)
-	public ModelAndView test(@Validated User user, Model model,Locale locale,HttpSession session) {
+	public ModelAndView test(@Validated User user, Model model,Locale locale,HttpSession session) throws IOException {
 		
 		System.out.println("User Page Requested");
 		Date date = new Date();
@@ -185,7 +187,7 @@ public class HomeController {
 			//System.out.println(path+"\\"+user.getSubjectType().trim()+".txt");
 		
 		File questionloc=new File(path+""+user.getSubjectType().trim()+".txt");
-				FileInputStream fileInStem = null;
+				/*FileInputStream fileInStem = null;
 		try {
 			fileInStem = new FileInputStream(questionloc);
 		} catch (FileNotFoundException e) {
@@ -194,13 +196,21 @@ public class HomeController {
 		}
 		
 		
-		BufferedInputStream buffReader=new BufferedInputStream(fileInStem);  
+		BufferedInputStream buffReader=new BufferedInputStream(fileInStem); */ 
+		BufferedReader bufReader=null;
+		try {
+		 bufReader=new BufferedReader((new InputStreamReader(new FileInputStream(questionloc),"UTF8")));
+		}catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		 
 		
 		int a;
 		StringBuilder  fileStringBuilder=new StringBuilder();
 		
 		try {
-			while((a=buffReader.read())!=-1){ 
+			while((a=bufReader.read())!=-1){ 
 				fileStringBuilder.append((char)a);
 			}
 		} catch (IOException e) {
