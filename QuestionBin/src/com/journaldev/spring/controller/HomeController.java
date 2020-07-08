@@ -62,7 +62,7 @@ public class HomeController {
 		
 		String path=session.getServletContext().getRealPath("/WEB-INF/Log/"); 
 		File Idloc=new File(path+""+"LoginId.txt");
-		System.out.println(Idloc);
+		
 		
 		FileInputStream fileStem = null;
 		try {
@@ -95,7 +95,7 @@ public class HomeController {
 			String struserId=user.getUserId().trim();
 			String userPwd=user.getPassword().trim();
 			
-			if (logiIdList.get(i).trim().equalsIgnoreCase(struserId) && userPwd=="sangamone@1") {
+			if (logiIdList.get(i).trim().equalsIgnoreCase(struserId) && userPwd.equals("sangamone$1")) {
 			
 				return "uploading";
 			}
@@ -251,7 +251,7 @@ public class HomeController {
 	public ModelAndView result(@Validated User user, Model model,Locale locale,HttpSession session) {
 		
 		System.out.println("User Page Requested");
-		System.out.println(user.getCorrectAnswer().trim());
+		//System.out.println(user.getCorrectAnswer().trim());
 		
 		Date date = new Date();
 		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
@@ -279,9 +279,9 @@ public class HomeController {
 		answList.addAll((Collection<? extends String>) session.getAttribute("TotalAnswerList"));
 		
 		for (int i = 0; i < queList.size(); i++) {
-			System.out.println("Each Question="+queList.get(i));
+			/*System.out.println("Each Question="+queList.get(i));
 			System.out.println(optionList.get(i));
-			System.out.println("Answer="+answList.get(i));
+			System.out.println("Answer="+answList.get(i));*/
 			
 									
 			
