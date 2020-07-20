@@ -108,18 +108,11 @@ public class HomeController {
 
 	
 	@RequestMapping(value="/uploaded",method=RequestMethod.POST)  
-	public ModelAndView upload(@RequestParam CommonsMultipartFile file,HttpSession session){ 
-		
-	
+	public ModelAndView upload(@RequestParam CommonsMultipartFile file,HttpSession session){  
 	        String path=session.getServletContext().getRealPath("/WEB-INF/UPLOADED_FILE/");  
-	        String filename=file.getOriginalFilename(); 
-	        System.out.println(path+""+filename);
-	        
-	        File fil=new File(path+""+filename);
-           double filesize=(fil.length() / 1024)+1;
-           System.out.println("Size of file::"+filesize);
-           System.out.println("filename::"+filename);
-           if(!filename.isEmpty() && filesize<=10) {
+	        String filename=file.getOriginalFilename();  
+	          
+	        System.out.println(path+""+filename);  
 	        try{  
 	        byte barr[]=file.getBytes();  
 	          
@@ -127,16 +120,12 @@ public class HomeController {
 	                 new FileOutputStream(path+"/"+filename));  
 	        bout.write(barr);  
 	        bout.flush();  
-	        bout.close();
+	        bout.close();  
 	        
-	       
 	          
 	        }catch(Exception e){System.out.println(e);}  
 	        return new ModelAndView("upload",filename,path+"/"+filename); 
-	        }
-	        else {
-	        	return new ModelAndView("error");
-	        }
+	       
 	    }  
 	
 	
